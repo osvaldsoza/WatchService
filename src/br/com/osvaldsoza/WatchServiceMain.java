@@ -19,11 +19,11 @@ public class WatchServiceMain {
 
             do {
                 watchKey = service.take();
-                Path eventDir = map.get(watchKey);
+                Path pathDir = map.get(watchKey);
                 for (WatchEvent<?> event : watchKey.pollEvents()) {
-                    WatchEvent.Kind<?> kind = event.kind();
+                    WatchEvent.Kind<?> watchEvenKind = event.kind();
                     Path fileName = (Path)event.context();
-                    System.out.println(eventDir + ": " + kind + ": " + fileName);
+                    System.out.println(pathDir + ": " + watchEvenKind + ": " + fileName);
                 }
             }while (watchKey.reset());
 
